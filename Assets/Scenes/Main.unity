@@ -1309,7 +1309,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playerNameText: {fileID: 1655105180}
-  enterPlayerName: {fileID: 357126893}
+  enterPlayerName_Box: {fileID: 1226910116}
 --- !u!4 &2051597863
 Transform:
   m_ObjectHideFlags: 0

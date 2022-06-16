@@ -12,8 +12,9 @@ public class UserInterfaceManager : MonoBehaviour
     private TextMeshProUGUI playerNameText;
     private string currentPlayerName;
 
+
     [SerializeField]
-    private TextMeshProUGUI enterPlayerName;
+    private TMP_InputField enterPlayerName_Box;
 
 
     private void Awake()
@@ -28,21 +29,23 @@ public class UserInterfaceManager : MonoBehaviour
 
     public void SetPlayerName()
     {
-        currentPlayerName = enterPlayerName.text;
+        currentPlayerName = enterPlayerName_Box.text; 
         playerNameText.text = currentPlayerName;
     }
 
     private void SavePlayerName()
     {
-        PlayerPrefs.GetString(currentPlayerName, playerNameText.text);
+        
+        PlayerPrefs.SetString(currentPlayerName, playerNameText.text); 
+        PlayerPrefs.Save();
     }
 
     private string GetSavedPlayerName()
     {
-        PlayerPrefs.SetString(currentPlayerName, playerNameText.text);
-        Debug.Log("name is:" + currentPlayerName);
+        PlayerPrefs.GetString(currentPlayerName, playerNameText.text); 
+        Debug.Log("name is:" + playerNameText.text);
 
+        return playerNameText.text;
 
-        return null;
     }
 }
