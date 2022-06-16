@@ -3,7 +3,6 @@ using System.Collections;
 using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 public class UserInterfaceManager : MonoBehaviour
 {
@@ -36,8 +35,6 @@ public class UserInterfaceManager : MonoBehaviour
     private void SavePlayerName()
     {
         PlayerPrefs.GetString(currentPlayerName, playerNameText.text);
-        Debug.Log("Is player name saved:" + currentPlayerName);
-
     }
 
     private string GetSavedPlayerName()
