@@ -24,7 +24,7 @@ public class UserInterfaceManager : MonoBehaviour
 
     private void Start()
     {
-        currentPlayerName = GetSavedPlayerName();
+        GetSavedPlayerName();
     }
 
     public void SetPlayerName()
@@ -33,19 +33,14 @@ public class UserInterfaceManager : MonoBehaviour
         playerNameText.text = currentPlayerName;
     }
 
-    private void SavePlayerName()
+    public void SavePlayerName()
     {
-        
-        PlayerPrefs.SetString(currentPlayerName, playerNameText.text); 
-        PlayerPrefs.Save();
+        PlayerPrefs.SetString("currentPlayerName", playerNameText.text); 
     }
 
-    private string GetSavedPlayerName()
+    private void GetSavedPlayerName()
     {
-        PlayerPrefs.GetString(currentPlayerName, playerNameText.text); 
+        playerNameText.text = PlayerPrefs.GetString("currentPlayerName"); 
         Debug.Log("name is:" + playerNameText.text);
-
-        return playerNameText.text;
-
     }
 }
