@@ -7,27 +7,24 @@ using UnityEngine.UI;
 
 public class NewGame : MonoBehaviour
 {
-
-
     [Header("NEW GAME")]
     [TextArea(minLines: 1, maxLines: 2)]
-    public string _NewGameName;
+    public string NewGameName;
 
-
-   
-
-    void Start()
+    private void Start()
     {
-        
+        if(NewGameName != "Game")
+        {
+            NewGameActions(); // Tests
+        }
     }
-
-    void Update()
+    public void GameName()
     {
-        
+        SceneManager.LoadScene(NewGameName);
     }
-
-    public void NewGameName()
+    private void NewGameActions()
     {
-        SceneManager.LoadScene(_NewGameName);
+        Image NewGameImage = UserInterfaceManager.Instance.optionsManager.NewGame.GetComponent<Image>();
+        NewGameImage.color = Color.red; // Tests
     }
 }

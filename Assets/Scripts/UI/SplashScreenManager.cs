@@ -7,68 +7,59 @@ using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 public class SplashScreenManager : MonoBehaviour
 {
-
-
     [Header("ACTIVATE - MAIN MENU")]
     public GameObject MainMenuButtons;
 
-
-    [Header("DESTROY - SPLASH SCREENS")]
-    public GameObject DestroySplashScreen;
-    public GameObject DestroyHelperScreen;
+    [Header("DEACTIVATE - SPLASH SCREENS")]
+    public GameObject SplashScreen;
+    public GameObject HelperScreen;
 
     [Header("SPLASH SCREEN IMAGES MANAGER")]
     [SerializeField] private Image SplashScreenImage;
     [SerializeField] private Image HelperScreenImage;
 
-
     private void Awake()
     {
         MainMenuButtons.SetActive(false);
+        StartCoroutine(ActivateMainMenuRoutine());
     }
 
     void Start()
     {
-        SplashScreenImage = GameObject.Find("Splash Screen").GetComponent<Image>();
-        HelperScreenImage = GameObject.Find("Helper Screen").GetComponent<Image>();
+        StartCoroutine(DeactivateRaycastTargetFromSplashRoutine());
+        StartCoroutine(SplashStateRoutine());
     }
 
     void Update()
     {
-        StartCoroutine(SplashFlow());
-
-        if(Time.time > 7f)
-        {
-            StopCoroutine(SplashFlow());
-        }
+      
     }
 
-    private void ToDestroy()
+    IEnumerator ActivateMainMenuRoutine()
     {
-        Destroy(DestroySplashScreen);
-        Destroy(DestroyHelperScreen);
+        yield return new WaitForSeconds(2.5f);
+        MainMenuButtons.SetActive(true);
     }
 
-    IEnumerator SplashFlow()
+    IEnumerator DeactivateRaycastTargetFromSplashRoutine()
     {
-        if (Time.time > 3f)
+        yield return new WaitForSeconds(3.5f);
+        SplashScreenImage.raycastTarget = false;
+        HelperScreenImage.raycastTarget = false;
+    }
+
+    IEnumerator SplashStateRoutine()
+    {
+        yield return new WaitForSecondsRealtime(0f);
+
+        if (Time.time > 7f)
         {
+            SplashScreen.SetActive(false);
+            HelperScreen.SetActive(false);
+            StopCoroutine(DeactivateRaycastTargetFromSplashRoutine());
+
             MainMenuButtons.SetActive(true);
+            StopCoroutine(ActivateMainMenuRoutine());
         }
-
-        if (Time.time > 4.5f)
-        {
-            SplashScreenImage.raycastTarget = false;
-            HelperScreenImage.raycastTarget = false;
-        }
-
-
-        if (Time.time > 6.5f)
-        {
-            ToDestroy();
-        }
-
-        yield return new WaitForSeconds(0f);
     }
-
 }

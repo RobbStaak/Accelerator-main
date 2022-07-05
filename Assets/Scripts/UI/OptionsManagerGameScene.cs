@@ -7,35 +7,37 @@ using TMPro;
 
 public class OptionsManagerGameScene : MonoBehaviour
 {
-
     [Header("OPTIONS - GAME PLACEHOLDER FLOW")]
     [Header("OPTIONS - MAIN FLOW")]
     public GameObject OptionsPanel;
 
     [Header("OPTIONS - ADDITIONAL FLOW")]
-    [SerializeField] private GameObject _BackToMenu;
+    [SerializeField] private GameObject BackToMenu;
 
     void Start()
     {
-        
+        CheckOptionsPanelGameScene();
     }
-
-    void Update()
-    {
-       
-    }
-
     public void OptionsPanelEnable()
     {
         OptionsPanel.SetActive(true);
-
-        _BackToMenu.GetComponent<Button>().enabled = false;
+        BackToMenu.GetComponent<Button>().enabled = false;
     }
 
     public void OptionsPanelDisable()
     {
         OptionsPanel.SetActive(false);
-
-        _BackToMenu.GetComponent<Button>().enabled = true;
+        BackToMenu.GetComponent<Button>().enabled = true;
+    }
+    public void CheckOptionsPanelGameScene()
+    {
+        if (UserInterfaceManager.Instance.optionsManagerGameScene.OptionsPanel.activeInHierarchy)
+        {
+            Debug.Log("OptionsPanelGameScene is: Active");
+        }
+        else
+        {
+            Debug.Log("OptionsPanelGameScene is: Deactive");
+        }
     }
 }

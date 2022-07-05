@@ -5,28 +5,18 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
-
 public class LoadGame : MonoBehaviour
 {
-
-
     [Header("LOAD GAME")]
     [TextArea(minLines: 1, maxLines: 2)]
-    public string _LoadGameName;
+    public string LoadGameName;
 
-    void Start()
+    private void Start()
     {
-        
-    }
 
-    void Update()
+    }
+    public void GameName()
     {
-        
+        SceneManager.LoadScene(LoadGameName);
     }
-
-    public void LoadGameName()
-    {
-        SceneManager.LoadScene(_LoadGameName);
-    }
-
 }
