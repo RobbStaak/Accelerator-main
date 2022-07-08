@@ -10,12 +10,14 @@ public class UserInterfaceManager : MonoBehaviour
 {
     public static UserInterfaceManager Instance { get; private set; }
 
-    [HideInInspector] public NewGame newGame;
-    [HideInInspector] public LoadGame loadGame;
-    [HideInInspector] public OptionsManager optionsManager;
-    [HideInInspector] public OptionsManagerGameScene optionsManagerGameScene;
-    [HideInInspector] public SplashScreenManager splashScreenManager;
-    [HideInInspector] public Scene scene;
+    [HideInInspector] public NewGameSceneManager GetNewGameSceneManager;
+    [HideInInspector] public LoadGameSceneManager GetLoadGameSceneManager;
+    [HideInInspector] public OptionsManager GetOptionsManager;
+    [HideInInspector] public OptionsManagerGameScene GetOptionsManagerGameScene;
+    [HideInInspector] public MainMenuButtonsManager GetMainMenuButtonsManager;
+    [HideInInspector] public BackToMainMenuButtonManager GetBackToMainMenuButtonManager;
+    [HideInInspector] public SplashScreenManager GetSplashScreenManager;
+    [HideInInspector] public Scene GetScene;
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class UserInterfaceManager : MonoBehaviour
     }
     private void Start()
     {
-        Debug.Log("Current scene name is: " + scene.name);
+        Debug.Log("Current scene name is: " + GetScene.name);
     }
     private void Update()
     {
@@ -32,12 +34,14 @@ public class UserInterfaceManager : MonoBehaviour
     }
     IEnumerator GetGlobalAccess()
     {
-        optionsManager = gameObject.GetComponent<OptionsManager>();
-        optionsManagerGameScene = gameObject.GetComponent<OptionsManagerGameScene>();
-        newGame = gameObject.GetComponent<NewGame>();
-        splashScreenManager = gameObject.GetComponent<SplashScreenManager>();
-        scene = SceneManager.GetActiveScene();
-        loadGame = gameObject.GetComponent<LoadGame>();
+        GetNewGameSceneManager = gameObject.GetComponent<NewGameSceneManager>();
+        GetLoadGameSceneManager = gameObject.GetComponent<LoadGameSceneManager>();
+        GetOptionsManager = gameObject.GetComponent<OptionsManager>();
+        GetOptionsManagerGameScene = gameObject.GetComponent<OptionsManagerGameScene>();
+        GetMainMenuButtonsManager = gameObject.GetComponent<MainMenuButtonsManager>();
+        GetBackToMainMenuButtonManager = gameObject.GetComponent<BackToMainMenuButtonManager>();
+        GetSplashScreenManager = gameObject.GetComponent<SplashScreenManager>();
+        GetScene = SceneManager.GetActiveScene();
 
         yield return new WaitForSeconds(0.5f);
     }

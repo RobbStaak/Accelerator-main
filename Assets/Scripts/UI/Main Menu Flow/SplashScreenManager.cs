@@ -8,19 +8,19 @@ using UnityEngine.UI;
 public class SplashScreenManager : MonoBehaviour
 {
     [Header("ACTIVATE - MAIN MENU")]
-    public GameObject MainMenuButtons;
+    public GameObject MainMenu;
 
-    [Header("DEACTIVATE - SPLASH SCREENS")]
+    [Header("DEACTIVATE - SPLASH AND HELPER SCREENS")]
     public GameObject SplashScreen;
     public GameObject HelperScreen;
 
-    [Header("SPLASH SCREEN IMAGES MANAGER")]
+    [Header("SPLASH AND HELPER SCREENS - IMAGE ACTIONS")]
     [SerializeField] private Image SplashScreenImage;
     [SerializeField] private Image HelperScreenImage;
 
     private void Awake()
     {
-        MainMenuButtons.SetActive(false);
+        MainMenu.SetActive(false);
         StartCoroutine(ActivateMainMenuRoutine());
     }
 
@@ -38,7 +38,7 @@ public class SplashScreenManager : MonoBehaviour
     IEnumerator ActivateMainMenuRoutine()
     {
         yield return new WaitForSeconds(2.5f);
-        MainMenuButtons.SetActive(true);
+        MainMenu.SetActive(true);
     }
 
     IEnumerator DeactivateRaycastTargetFromSplashRoutine()
@@ -58,7 +58,7 @@ public class SplashScreenManager : MonoBehaviour
             HelperScreen.SetActive(false);
             StopCoroutine(DeactivateRaycastTargetFromSplashRoutine());
 
-            MainMenuButtons.SetActive(true);
+            MainMenu.SetActive(true);
             StopCoroutine(ActivateMainMenuRoutine());
         }
     }

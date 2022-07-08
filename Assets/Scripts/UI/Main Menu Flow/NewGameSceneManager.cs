@@ -5,7 +5,7 @@ using TMPro;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
-public class NewGame : MonoBehaviour
+public class NewGameSceneManager : MonoBehaviour
 {
     [Header("NEW GAME")]
     [TextArea(minLines: 1, maxLines: 2)]
@@ -15,16 +15,11 @@ public class NewGame : MonoBehaviour
     {
         if(NewGameName != "Game")
         {
-            NewGameActions(); // Tests
+            UserInterfaceManager.Instance.GetMainMenuButtonsManager.NewGameButtonActions(); // Test
         }
     }
     public void GameName()
     {
         SceneManager.LoadScene(NewGameName);
-    }
-    private void NewGameActions()
-    {
-        Image NewGameImage = UserInterfaceManager.Instance.optionsManager.NewGame.GetComponent<Image>();
-        NewGameImage.color = Color.red; // Tests
     }
 }

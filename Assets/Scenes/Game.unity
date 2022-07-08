@@ -245,8 +245,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 100365993}
-        m_TargetAssemblyTypeName: OptionsAdditionalManager, Assembly-CSharp
-        m_MethodName: OptionsPanelEnable
+        m_TargetAssemblyTypeName: OptionsManagerGameScene, Assembly-CSharp
+        m_MethodName: EnableOptionsPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -256,9 +256,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 100365993}
-        m_TargetAssemblyTypeName: OptionsManagerGameScene, Assembly-CSharp
-        m_MethodName: CheckOptionsPanelGameScene
+      - m_Target: {fileID: 100365996}
+        m_TargetAssemblyTypeName: BackToMainMenuButtonManager, Assembly-CSharp
+        m_MethodName: DisableButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -413,8 +413,9 @@ GameObject:
   m_Component:
   - component: {fileID: 100365992}
   - component: {fileID: 100365995}
-  - component: {fileID: 100365993}
   - component: {fileID: 100365994}
+  - component: {fileID: 100365993}
+  - component: {fileID: 100365996}
   m_Layer: 0
   m_Name: User_Interface_Manager
   m_TagString: Untagged
@@ -450,7 +451,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OptionsPanel: {fileID: 1817898259}
-  BackToMenu: {fileID: 1634621131}
 --- !u!114 &100365994
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,13 +476,28 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df761a24b37e84743b66e1f66bbb59fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  newGame: {fileID: 0}
-  loadGame: {fileID: 0}
-  optionsManager: {fileID: 0}
-  optionsManagerGameScene: {fileID: 0}
-  splashScreenManager: {fileID: 0}
-  scene:
+  GetNewGameManager: {fileID: 0}
+  GetLoadGameManager: {fileID: 0}
+  GetOptionsManager: {fileID: 0}
+  GetOptionsManagerGameScene: {fileID: 0}
+  GetMainMenuButtonsManager: {fileID: 0}
+  GetBackToMainMenuButtonManager: {fileID: 0}
+  GetSplashScreenManager: {fileID: 0}
+  GetScene:
     m_Handle: 0
+--- !u!114 &100365996
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100365990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 76734c6279b2b304c819f0b9c6bad23a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BackToMenuButton: {fileID: 1634621133}
 --- !u!1 &305311814
 GameObject:
   m_ObjectHideFlags: 0
@@ -719,7 +734,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back to Menu
+  m_text: Back to Main Menu
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -746,8 +761,8 @@ MonoBehaviour:
   m_faceColor:
     serializedVersion: 2
     rgba: 4294967295
-  m_fontSize: 20
-  m_fontSizeBase: 20
+  m_fontSize: 15.53
+  m_fontSizeBase: 15.53
   m_fontWeight: 400
   m_enableAutoSizing: 0
   m_fontSizeMin: 18
@@ -1443,8 +1458,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 100365993}
-        m_TargetAssemblyTypeName: OptionsAdditionalManager, Assembly-CSharp
-        m_MethodName: OptionsPanelDisable
+        m_TargetAssemblyTypeName: OptionsManagerGameScene, Assembly-CSharp
+        m_MethodName: DisableOptionsPanel
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1454,9 +1469,9 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
-      - m_Target: {fileID: 100365993}
-        m_TargetAssemblyTypeName: OptionsManagerGameScene, Assembly-CSharp
-        m_MethodName: CheckOptionsPanelGameScene
+      - m_Target: {fileID: 100365996}
+        m_TargetAssemblyTypeName: BackToMainMenuButtonManager, Assembly-CSharp
+        m_MethodName: EnableButton
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1544,7 +1559,7 @@ RectTransform:
   m_AnchorMin: {x: 0.7743958, y: 0.30600002}
   m_AnchorMax: {x: 0.9694792, y: 0.69900006}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 0, y: -9.96462}
+  m_SizeDelta: {x: 0, y: -3.261263}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1817898261
 MonoBehaviour:

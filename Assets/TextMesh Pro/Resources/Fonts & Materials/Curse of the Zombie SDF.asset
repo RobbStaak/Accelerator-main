@@ -76,7 +76,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _FaceTex:
-        m_Texture: {fileID: 0}
+        m_Texture: {fileID: 10309, guid: 0000000000000000f000000000000000, type: 0}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MainTex:
@@ -190,7 +190,7 @@ MonoBehaviour:
     m_SubscriptSize: 0.5
     m_UnderlineOffset: -19.533203
     m_UnderlineThickness: 10.03418
-    m_StrikethroughOffset: 0
+    m_StrikethroughOffset: 63.2
     m_StrikethroughThickness: 10.03418
     m_TabWidth: 34
   m_GlyphTable:

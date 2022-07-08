@@ -5,7 +5,7 @@ using UnityEngine.SceneManagement;
 using TMPro;
 using UnityEngine.UI;
 
-public class LoadGame : MonoBehaviour
+public class LoadGameSceneManager : MonoBehaviour
 {
     [Header("LOAD GAME")]
     [TextArea(minLines: 1, maxLines: 2)]
