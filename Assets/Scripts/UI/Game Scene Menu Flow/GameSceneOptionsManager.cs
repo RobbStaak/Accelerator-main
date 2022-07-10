@@ -5,33 +5,26 @@ using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 using TMPro;
 
-public class OptionsManagerGameScene : MonoBehaviour
+public class GameSceneOptionsManager : MonoBehaviour
 {
     [Header("OPTIONS PANEL - ENABLE/DISABLE")]
     public GameObject OptionsPanel;
 
-    void Start()
+    private void Start()
     {
-        CheckOptionsPanelGameScene();
+
     }
     public void EnableOptionsPanel()
     {
         OptionsPanel.SetActive(true);
+        UserInterfaceManager.Instance.ScreenStateID = 3;
+        UserInterfaceManager.Instance.CheckCurrentScreenState();
     }
 
     public void DisableOptionsPanel()
     {
         OptionsPanel.SetActive(false);
-    }
-    public void CheckOptionsPanelGameScene()
-    {
-        if (OptionsPanel.activeInHierarchy)
-        {
-            Debug.Log("OptionsPanelGameScene is: Active");
-        }
-        else
-        {
-            Debug.Log("OptionsPanelGameScene is: Deactive");
-        }
+        UserInterfaceManager.Instance.ScreenStateID = -3;
+        UserInterfaceManager.Instance.CheckCurrentScreenState();
     }
 }

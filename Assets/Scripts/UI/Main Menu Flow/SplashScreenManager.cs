@@ -24,31 +24,33 @@ public class SplashScreenManager : MonoBehaviour
         StartCoroutine(ActivateMainMenuRoutine());
     }
 
-    void Start()
+    private void Start()
     {
         StartCoroutine(DeactivateRaycastTargetFromSplashRoutine());
         StartCoroutine(SplashStateRoutine());
     }
 
-    void Update()
+    private void Update()
     {
       
     }
 
-    IEnumerator ActivateMainMenuRoutine()
+    public IEnumerator ActivateMainMenuRoutine()
     {
         yield return new WaitForSeconds(2.5f);
         MainMenu.SetActive(true);
+        UserInterfaceManager.Instance.ScreenStateID = 2;
+        UserInterfaceManager.Instance.CheckCurrentScreenState();
     }
 
-    IEnumerator DeactivateRaycastTargetFromSplashRoutine()
+    public IEnumerator DeactivateRaycastTargetFromSplashRoutine()
     {
         yield return new WaitForSeconds(3.5f);
         SplashScreenImage.raycastTarget = false;
         HelperScreenImage.raycastTarget = false;
     }
 
-    IEnumerator SplashStateRoutine()
+    public IEnumerator SplashStateRoutine()
     {
         yield return new WaitForSecondsRealtime(0f);
 

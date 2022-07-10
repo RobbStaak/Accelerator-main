@@ -413,12 +413,12 @@ GameObject:
   m_Component:
   - component: {fileID: 100365992}
   - component: {fileID: 100365995}
-  - component: {fileID: 100365994}
   - component: {fileID: 100365993}
   - component: {fileID: 100365996}
+  - component: {fileID: 100365997}
   m_Layer: 0
   m_Name: User_Interface_Manager
-  m_TagString: Untagged
+  m_TagString: UIManager
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -451,19 +451,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   OptionsPanel: {fileID: 1817898259}
---- !u!114 &100365994
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 100365990}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6cb1c96bef701ab4ab7e04dfaa41b61d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LoadGameName: Main Menu
 --- !u!114 &100365995
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -476,15 +463,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df761a24b37e84743b66e1f66bbb59fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetNewGameManager: {fileID: 0}
-  GetLoadGameManager: {fileID: 0}
-  GetOptionsManager: {fileID: 0}
-  GetOptionsManagerGameScene: {fileID: 0}
-  GetMainMenuButtonsManager: {fileID: 0}
-  GetBackToMainMenuButtonManager: {fileID: 0}
   GetSplashScreenManager: {fileID: 0}
+  GetNewGameSceneManager: {fileID: 0}
+  GetMainMenuOptionsManager: {fileID: 0}
+  GetExitGameManager: {fileID: 0}
+  GetMainMenuButtonsManager: {fileID: 0}
+  GetGameSceneOptionsManager: {fileID: 100365993}
+  GetBackToMainMenuButtonManager: {fileID: 100365996}
+  GetLoadGameSceneManager: {fileID: 100365997}
   GetScene:
     m_Handle: 0
+  ScreenStateID: 0
 --- !u!114 &100365996
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -498,6 +487,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   BackToMenuButton: {fileID: 1634621133}
+--- !u!114 &100365997
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 100365990}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b96ff4f2fbb09408419441bb691fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadGameName: MainMenu
 --- !u!1 &305311814
 GameObject:
   m_ObjectHideFlags: 0
@@ -1256,8 +1258,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 100365994}
-        m_TargetAssemblyTypeName: LoadGame, Assembly-CSharp
+      - m_Target: {fileID: 100365997}
+        m_TargetAssemblyTypeName: LoadGameSceneManager, Assembly-CSharp
         m_MethodName: GameName
         m_Mode: 1
         m_Arguments:

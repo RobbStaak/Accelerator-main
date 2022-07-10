@@ -13,10 +13,7 @@ public class NewGameSceneManager : MonoBehaviour
 
     private void Start()
     {
-        if(NewGameName != "Game")
-        {
-            UserInterfaceManager.Instance.GetMainMenuButtonsManager.NewGameButtonActions(); // Test
-        }
+
     }
     public void GameName()
     {

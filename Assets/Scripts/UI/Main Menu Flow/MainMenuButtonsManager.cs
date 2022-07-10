@@ -8,44 +8,51 @@ using TMPro;
 public class MainMenuButtonsManager : MonoBehaviour
 {
     [Header("MAIN MENU BUTTONS - ENABLE/DISABLE")]
-    public Button NewGameButton; // Test
-    [SerializeField] private Button LoadGameButton;
-    [SerializeField] private Button OptionsButton;
-    [SerializeField] private Button ExitButton;
+    public Button NewGameButton;
+    public Button LoadGameButton;
+    public Button OptionsButton;
+    public Button ExitButton;
 
     [Header("MAIN MENU BUTTONS - IMAGE ACTIONS")]
-    private Image NewGameButtonImage;
+    private Image OptionsButtonImage;
 
-    void Start()
+    private void Start()
     {
 
     }
 
-    void Update()
+    private void Update()
     {
-        
+
     }
 
     public void DisableButtons()
     {
-        NewGameButton.GetComponent<Button>().enabled = false;
-        LoadGameButton.GetComponent<Button>().enabled = false;
-        OptionsButton.GetComponent<Button>().enabled = false;
-        ExitButton.GetComponent<Button>().enabled = false;
-        UserInterfaceManager.Instance.GetOptionsManager.CheckOptionsPanelState();//Test
+        NewGameButton.enabled = false;
+        LoadGameButton.enabled = false;
+        OptionsButton.enabled = false;
+        ExitButton.enabled = false;
+        OptionsButtonActions();
     }
     public void EnableButtons()
     {
-        NewGameButton.GetComponent<Button>().enabled = true;
-        LoadGameButton.GetComponent<Button>().enabled = true;
-        OptionsButton.GetComponent<Button>().enabled = true;
-        ExitButton.GetComponent<Button>().enabled = true;
-        UserInterfaceManager.Instance.GetOptionsManager.CheckOptionsPanelState();//Test
+        NewGameButton.enabled = true;
+        LoadGameButton.enabled = true;
+        OptionsButton.enabled = true;
+        ExitButton.enabled = true;
+        OptionsButtonActions();
     }
-    
-    public void NewGameButtonActions()
+
+    public void OptionsButtonActions()
     {
-        NewGameButtonImage = NewGameButton.GetComponent<Image>();
-        NewGameButtonImage.color = Color.red; // Test
+        if (UserInterfaceManager.Instance.GetMainMenuOptionsManager.OptionsPanel.activeInHierarchy)
+        {
+            OptionsButtonImage = OptionsButton.image;
+            OptionsButtonImage.color = Color.green;
+        }
+        else
+        {
+            OptionsButtonImage.color = Color.white;
+        }
     }
 }

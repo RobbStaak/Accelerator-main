@@ -10,22 +10,20 @@ public class BackToMainMenuButtonManager : MonoBehaviour
     [Header("BACK TO MENU BUTTON - ENABLE/DISABLE")]
     [SerializeField] private Button BackToMenuButton;
 
-    void Start()
+    private void Start()
     {
         
     }
-    void Update()
+    private void Update()
     {
         
     }
     public void EnableButton()
     {
-        BackToMenuButton.GetComponent<Button>().enabled = true;
-        UserInterfaceManager.Instance.GetOptionsManagerGameScene.CheckOptionsPanelGameScene();
+        BackToMenuButton.enabled = true;
     }
     public void DisableButton()
     {
-        BackToMenuButton.GetComponent<Button>().enabled = false;
-        UserInterfaceManager.Instance.GetOptionsManagerGameScene.CheckOptionsPanelGameScene();
+        BackToMenuButton.enabled = false;
     }
 }

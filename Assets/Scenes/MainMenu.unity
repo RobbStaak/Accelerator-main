@@ -2247,10 +2247,11 @@ GameObject:
   m_Component:
   - component: {fileID: 1742943276}
   - component: {fileID: 1742943274}
-  - component: {fileID: 1742943284}
-  - component: {fileID: 1742943286}
-  - component: {fileID: 1742943282}
   - component: {fileID: 1742943283}
+  - component: {fileID: 1742943284}
+  - component: {fileID: 1742943287}
+  - component: {fileID: 1742943282}
+  - component: {fileID: 1742943286}
   - component: {fileID: 1742943285}
   m_Layer: 0
   m_Name: User_Interface_Manager
@@ -2271,15 +2272,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: df761a24b37e84743b66e1f66bbb59fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  GetNewGameManager: {fileID: 0}
-  GetLoadGameManager: {fileID: 0}
-  GetOptionsManager: {fileID: 0}
-  GetOptionsManagerGameScene: {fileID: 0}
-  GetMainMenuButtonsManager: {fileID: 0}
+  GetSplashScreenManager: {fileID: 1742943283}
+  GetNewGameSceneManager: {fileID: 1742943284}
+  GetMainMenuOptionsManager: {fileID: 1742943282}
+  GetExitGameManager: {fileID: 1742943285}
+  GetMainMenuButtonsManager: {fileID: 1742943286}
+  GetGameSceneOptionsManager: {fileID: 0}
   GetBackToMainMenuButtonManager: {fileID: 0}
-  GetSplashScreenManager: {fileID: 0}
+  GetLoadGameSceneManager: {fileID: 1742943287}
   GetScene:
     m_Handle: 0
+  ScreenStateID: 0
 --- !u!4 &1742943276
 Transform:
   m_ObjectHideFlags: 0
@@ -2366,6 +2369,19 @@ MonoBehaviour:
   LoadGameButton: {fileID: 1708071939}
   OptionsButton: {fileID: 983321398}
   ExitButton: {fileID: 2035683505}
+--- !u!114 &1742943287
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1742943273}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 29b96ff4f2fbb09408419441bb691fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  LoadGameName: 
 --- !u!1 &1842791928
 GameObject:
   m_ObjectHideFlags: 0
