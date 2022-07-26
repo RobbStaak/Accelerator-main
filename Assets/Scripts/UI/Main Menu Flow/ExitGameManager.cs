@@ -7,9 +7,14 @@ using UnityEngine.UI;
 
 public class ExitGameManager : MonoBehaviour
 {
-    public void Exit()
+    public void ApplicationQuit()
     {
         Application.Quit();
+    }
+
+    public void ExitFromEditor()
+    {
+        UnityEditor.EditorApplication.isPlaying = false;
     }
 }
 

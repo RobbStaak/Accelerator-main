@@ -4,7 +4,9 @@
 TagManager:
   serializedVersion: 2
   tags:
-  - UIManager
+  - EntryArea
+  - UnderwaterArea
+  - JungleArea
   layers:
   - Default
   - TransparentFX
@@ -12,11 +14,11 @@ TagManager:
   - 
   - Water
   - UI
-  - 
-  - 
-  - 
-  - 
-  - 
+  - Domestic
+  - Fish
+  - Shark
+  - Insect
+  - Monkey
   - 
   - 
   - 
@@ -41,4 +43,13 @@ TagManager:
   m_SortingLayers:
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: New Layer 1
+    uniqueID: 232828807
+    locked: 0
+  - name: New Layer 2
+    uniqueID: 827753483
+    locked: 0
+  - name: New Layer 3
+    uniqueID: 734526915
     locked: 0

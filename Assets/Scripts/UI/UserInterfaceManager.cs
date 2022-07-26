@@ -78,6 +78,18 @@ public class UserInterfaceManager : MonoBehaviour
             }
         }
     }
+
+    public enum ScreenState
+    {
+        MainMenuOptionsPanel_Open = 1,
+        MainMenuOptionsPanel_Close = -1,
+
+        MainMenu_Open = 2,
+        MainMenu_Close = -2,
+
+        GameSceneOptionsPanel_Open = 3,
+        GameSceneOptionsPanel_Close = -3
+    }
     private void CheckForNullReference()
     {
         if (GetScene.name == "Main Menu")
