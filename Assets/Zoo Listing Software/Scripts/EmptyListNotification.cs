@@ -5,17 +5,12 @@ using UnityEngine;
 
 public class EmptyListNotification : MonoBehaviour
 {
-    private int Coefficient = 0;
+    private bool IsNotificationActive = true;
     [SerializeField] private GameObject Notification;
 
     private void Start()
     {
         ZooEmptyListNotificationSystem();
-    }
-
-    private void Update()
-    {
-        
     }
 
     public void ZooEmptyListNotificationSystem()
@@ -24,11 +19,11 @@ public class EmptyListNotification : MonoBehaviour
         {
             if (Child.gameObject.activeSelf)
             {
-                Coefficient = 1;
+                IsNotificationActive = false;
             }
         }
 
-        if (Coefficient < 1)
+        if (IsNotificationActive != false)
         {
             Notification.SetActive(true);
         }

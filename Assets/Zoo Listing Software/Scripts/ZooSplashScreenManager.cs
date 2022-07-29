@@ -6,8 +6,6 @@ using UnityEngine.UI;
 
 public class ZooSplashScreenManager : MonoBehaviour
 {
-    [SerializeField] private Image ExitZooOption;
-
     [Header("SPLASH SCREEN - ACTIONS")]
     [SerializeField] private Canvas ZooSplashScreen;
     [SerializeField] private Animator ZooSplashBackgroundAnimator;
@@ -19,6 +17,7 @@ public class ZooSplashScreenManager : MonoBehaviour
     [SerializeField] private Canvas ZooBackgroundCanvas;
     [SerializeField] private Canvas ZooAreaCanvas;
     [SerializeField] private Canvas ZooCategoriesCanvas;
+    [SerializeField] private Image ExitZooOption;
 
     private void Start()
     {
@@ -26,11 +25,6 @@ public class ZooSplashScreenManager : MonoBehaviour
         StartCoroutine(SetUpSplash());
         StartCoroutine(SetUpZooScreens());
         StartCoroutine(SetExitZooOptionRaycastTarget());
-    }
-
-    private void Update()
-    {
-        
     }
 
     private IEnumerator SetUpSplash()

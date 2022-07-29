@@ -17,11 +17,6 @@ public class ScrollbarManager : MonoBehaviour
         }
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void SetScrollbarValue()
     {
         ThisScrollbar.value = 1;

@@ -23,11 +23,6 @@ public class ZooDropdownManager : MonoBehaviour
         ZooCategoriesTitle.SetActive(false);
     }
 
-    private void Update()
-    {
-        
-    }
-
     public void DropdownValueChangedHappened(TMP_Dropdown Sender)
     {
         SetNoneAreaCategories(Sender);
@@ -52,7 +47,10 @@ public class ZooDropdownManager : MonoBehaviour
         {
             foreach (Transform Child in CategoriesTransform)
             {
-                Child.gameObject.SetActive(false);
+                if (Child.gameObject.activeInHierarchy)
+                {
+                    Child.gameObject.SetActive(false);
+                }
             }
             GetZooListingManager.SetNoneCategoryList();
         }
@@ -146,13 +144,13 @@ public class ZooDropdownManager : MonoBehaviour
 
         if (GetZooListingManager == null)
         {
-            var FindZooListingManager = GameObject.Find("Zoo Area_Categories_Canvas");
+            var FindZooListingManager = GameObject.Find("Zoo Categories_Canvas");
             GetZooListingManager = FindZooListingManager.GetComponent<ZooListingManager>();
         }
 
         if (ZooCategoriesTitle == null)
         {
-            var FindZooCategoriesTitle = GameObject.Find("Zoo _Categories_Panel").transform.GetChild(0);
+            var FindZooCategoriesTitle = GameObject.Find("Zoo_Categories_Panel").transform.GetChild(0);
             ZooCategoriesTitle = FindZooCategoriesTitle.gameObject;
         }
 
