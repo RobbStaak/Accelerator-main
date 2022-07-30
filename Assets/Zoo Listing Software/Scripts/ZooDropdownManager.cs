@@ -25,12 +25,7 @@ public class ZooDropdownManager : MonoBehaviour
 
     public void DropdownValueChangedHappened(TMP_Dropdown Sender)
     {
-        SetNoneAreaCategories(Sender);
-        SetEntryAreaCategories(Sender);
-        SetUnderwaterAreaCategories(Sender);
-        SetJungleAreaCategories(Sender);
-        SetAllAreasCategories(Sender);
-
+        SetAreaCategory(Sender);
         if (Sender.value == 0)
         {
             ZooCategoriesTitle.SetActive(false);
@@ -41,97 +36,46 @@ public class ZooDropdownManager : MonoBehaviour
         }
     }
 
-    public void SetNoneAreaCategories(TMP_Dropdown Sender)
+    public void SetAreaCategory(TMP_Dropdown Sender)
     {
-        if (Sender.value == 0)
+        foreach (Transform Child in CategoriesTransform)
         {
-            foreach (Transform Child in CategoriesTransform)
+            Child.gameObject.SetActive(false);
+
+            if (Sender.value == 0) // None Area
             {
                 if (Child.gameObject.activeInHierarchy)
                 {
                     Child.gameObject.SetActive(false);
                 }
             }
-            GetZooListingManager.SetNoneCategoryList();
-        }
-    }
-
-    public void SetEntryAreaCategories(TMP_Dropdown Sender)
-    {
-        if (Sender.value == 1)
-        {
-            foreach (Transform Child in CategoriesTransform)
+            else if (Sender.value == 1) // Entry Area
             {
-                if (Child.gameObject.tag != "EntryArea")
-                {
-                    if (Child.gameObject.activeInHierarchy)
-                    {
-                        Child.gameObject.SetActive(false);
-                    }
-                }
-                else
+                if(Child.gameObject.tag == "EntryArea")
                 {
                     Child.gameObject.SetActive(true);
                 }
             }
-            GetZooListingManager.SetNoneCategoryList();
-        }
-    }
-
-    public void SetUnderwaterAreaCategories(TMP_Dropdown Sender)
-    {
-        if (Sender.value == 2)
-        {
-            foreach (Transform Child in CategoriesTransform)
+            else if (Sender.value == 2) // UnderwaterArea
             {
-                if (Child.gameObject.tag != "UnderwaterArea")
-                {
-                    if (Child.gameObject.activeInHierarchy)
-                    {
-                        Child.gameObject.SetActive(false);
-                    }
-                }
-                else
+                if (Child.gameObject.tag == "UnderwaterArea")
                 {
                     Child.gameObject.SetActive(true);
                 }
             }
-            GetZooListingManager.SetNoneCategoryList();
-        }
-    }
-
-    public void SetJungleAreaCategories(TMP_Dropdown Sender)
-    {
-        if (Sender.value == 3)
-        {
-            foreach (Transform Child in CategoriesTransform)
+            else if (Sender.value == 3)// Jungle Area
             {
-                if (Child.gameObject.tag != "JungleArea")
-                {
-                    if (Child.gameObject.activeInHierarchy)
-                    {
-                        Child.gameObject.SetActive(false);
-                    }
-                }
-                else
+                if (Child.gameObject.tag == "JungleArea")
                 {
                     Child.gameObject.SetActive(true);
                 }
             }
-            GetZooListingManager.SetNoneCategoryList();
-        }
-    }
-
-    public void SetAllAreasCategories(TMP_Dropdown Sender)
-    {
-        if (Sender.value == 4)
-        {
-            foreach (Transform Child in CategoriesTransform)
+            else if (Sender.value == 4)// All Areas
             {
                 Child.gameObject.SetActive(true);
             }
-            GetZooListingManager.SetNoneCategoryList();
         }
+        GetZooListingManager.SetNoneCategoryList();
     }
 
     private void CheckForNullReference()
