@@ -7,25 +7,24 @@ using UnityEngine.UI;
 
 public class ZooDropdownManager : MonoBehaviour
 {
-    [SerializeField] private TMP_Dropdown DropdownZooArea;
+    public CategoryDisplay[] CategoryDisplayList = new CategoryDisplay[5];
+
+    public GameObject ZooCategoriesTitle;
     private TMP_Dropdown Sender;
-    [SerializeField] private ZooListingManager GetZooListingManager;
-    [SerializeField] private GameObject ZooCategoriesTitle;
-    [SerializeField] private Transform CategoriesTransform;
+    public TMP_Dropdown DropdownZooArea;
+    public ZooListingManager GetZooListingManager;
 
     private void Start()
     {
-        CheckForNullReference();
         DropdownZooArea.onValueChanged.AddListener(delegate
         {
-            DropdownValueChangedHappened(DropdownZooArea);            
+            DropdownValueChangedHappened(DropdownZooArea);
         });
         ZooCategoriesTitle.SetActive(false);
     }
 
     public void DropdownValueChangedHappened(TMP_Dropdown Sender)
     {
-        SetAreaCategory(Sender);
         if (Sender.value == 0)
         {
             ZooCategoriesTitle.SetActive(false);
@@ -34,74 +33,26 @@ public class ZooDropdownManager : MonoBehaviour
         {
             ZooCategoriesTitle.SetActive(true);
         }
+        SetAreaCategory();
     }
 
-    public void SetAreaCategory(TMP_Dropdown Sender)
+    public void SetAreaCategory()
     {
-        foreach (Transform Child in CategoriesTransform)
+        for (int i = 0; i < CategoryDisplayList.Length; i++)
         {
-            Child.gameObject.SetActive(false);
-
-            if (Sender.value == 0) // None Area
+            if (CategoryDisplayList[i].Category.DropdownValue[0] == DropdownZooArea.value)
             {
-                if (Child.gameObject.activeInHierarchy)
-                {
-                    Child.gameObject.SetActive(false);
-                }
+                CategoryDisplayList[i].gameObject.SetActive(true);
             }
-            else if (Sender.value == 1) // Entry Area
+            else if (CategoryDisplayList[i].Category.DropdownValue[1] == DropdownZooArea.value) // Set  All Category/Option
             {
-                if(Child.gameObject.tag == "EntryArea")
-                {
-                    Child.gameObject.SetActive(true);
-                }
+                CategoryDisplayList[i].gameObject.SetActive(true);
             }
-            else if (Sender.value == 2) // UnderwaterArea
+            else
             {
-                if (Child.gameObject.tag == "UnderwaterArea")
-                {
-                    Child.gameObject.SetActive(true);
-                }
-            }
-            else if (Sender.value == 3)// Jungle Area
-            {
-                if (Child.gameObject.tag == "JungleArea")
-                {
-                    Child.gameObject.SetActive(true);
-                }
-            }
-            else if (Sender.value == 4)// All Areas
-            {
-                Child.gameObject.SetActive(true);
+                CategoryDisplayList[i].gameObject.SetActive(false);
             }
         }
         GetZooListingManager.SetNoneCategoryList();
-    }
-
-    private void CheckForNullReference()
-    {
-        if (DropdownZooArea == null)
-        {
-            var FindDropdownZooArea = gameObject.transform.GetChild(2);
-            DropdownZooArea = FindDropdownZooArea.GetComponent<TMP_Dropdown>();
-        }
-
-        if (GetZooListingManager == null)
-        {
-            var FindZooListingManager = GameObject.Find("Zoo Categories_Canvas");
-            GetZooListingManager = FindZooListingManager.GetComponent<ZooListingManager>();
-        }
-
-        if (ZooCategoriesTitle == null)
-        {
-            var FindZooCategoriesTitle = GameObject.Find("Zoo_Categories_Panel").transform.GetChild(0);
-            ZooCategoriesTitle = FindZooCategoriesTitle.gameObject;
-        }
-
-        if (CategoriesTransform == null)
-        {
-            var FindCategoriesTransform = GameObject.Find("Categories");
-            CategoriesTransform = FindCategoriesTransform.GetComponent<Transform>();
-        }
     }
 }
